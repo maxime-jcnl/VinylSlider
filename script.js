@@ -14,9 +14,9 @@ const center = { x: canvas.width / 2, y: canvas.height / 2 };
 let isRotating = true; // Cette variable passera en false pour mettre en pause la rotation
 
 const elements = []; // Tableau de nos éléments placé sur le vinyl
-let audioContext; // Variable pour la lecture des son
+let audioContext; // Variable pour la lecture des sons
 const sounds = {};
-let recordedSound = null; // Variable to hold the recorded sound
+const recordedSounds = []; // List to store recorded sounds
 
 // Charger les fichiers audio pour chaque son
 async function loadSounds() {
@@ -34,14 +34,18 @@ async function loadSounds() {
     }
 }
 
-function playSound(sound) {
-    if (!sounds[sound] && sound !== 'recorded') return;
-
-    const source = audioContext.createBufferSource();
-    source.buffer = sound === 'recorded' ? recordedSound : sounds[sound];
-
-    source.connect(audioContext.destination);
-    source.start(0);
+function playSound(sound, soundIndex = null) {
+    if (sound === 'recorded' && soundIndex !== null) {
+        const source = audioContext.createBufferSource();
+        source.buffer = recordedSounds[soundIndex];
+        source.connect(audioContext.destination);
+        source.start(0);
+    } else if (sounds[sound]) {
+        const source = audioContext.createBufferSource();
+        source.buffer = sounds[sound];
+        source.connect(audioContext.destination);
+        source.start(0);
+    }
 }
 
 loadSounds();
@@ -49,6 +53,7 @@ loadSounds();
 let flashStartTime = null;
 let flashing = false;
 let selectedSound = 'kick'; // Son sélectionné par défaut
+let selectedRecordedSoundIndex = null; // Index of the selected recorded sound
 
 function drawVinyl() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -134,7 +139,7 @@ function checkCollision(el) {
 
         const isColliding = distX <= armEndX && distY <= widthVal / 2;
         if (isColliding && !el.wasColliding) {
-            playSound(el.sound);
+            playSound(el.sound, el.soundIndex);
             triggerFlash();
         }
         el.wasColliding = isColliding;
@@ -181,7 +186,13 @@ soundButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
         soundButtons.forEach(btn => btn.classList.remove('active', 'dark-mode', 'light-mode'));
         button.classList.add('active');
-        selectedSound = ['kick', 'snare', 'hats', 'perc', 'recorded'][index];
+        if (index < 4) {
+            selectedSound = ['kick', 'snare', 'hats', 'perc'][index];
+            selectedRecordedSoundIndex = null;
+        } else {
+            selectedSound = 'recorded';
+            selectedRecordedSoundIndex = recordedSounds.length - 1; // Use the most recent recording
+        }
         updateActiveButtonStyles();
     });
 });
@@ -216,8 +227,10 @@ recordBtn.addEventListener('click', async () => {
         mediaRecorder.onstop = async () => {
             const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
             const arrayBuffer = await audioBlob.arrayBuffer();
-            recordedSound = await audioContext.decodeAudioData(arrayBuffer);
+            const decodedData = await audioContext.decodeAudioData(arrayBuffer);
+            recordedSounds.push(decodedData); // Store the recording
             recordedChunks = [];
+            selectedRecordedSoundIndex = recordedSounds.length - 1; // Update the selected index
         };
 
         mediaRecorder.start();
@@ -256,14 +269,14 @@ function addElement(e) {
         const angleToPoint = Math.atan2(rotatedY, rotatedX);
         const x = (centerHoleRadius + pointRadius) * Math.cos(angleToPoint);
         const y = (centerHoleRadius + pointRadius) * Math.sin(angleToPoint);
-        elements.push({ x, y, wasColliding: false, sound: selectedSound });
+        elements.push({ x, y, wasColliding: false, sound: selectedSound, soundIndex: selectedRecordedSoundIndex });
     } else if (distanceFromCenter > maxDistance) {
         const angleToPoint = Math.atan2(rotatedY, rotatedX);
         const x = maxDistance * Math.cos(angleToPoint);
         const y = maxDistance * Math.sin(angleToPoint);
-        elements.push({ x, y, wasColliding: false, sound: selectedSound });
+        elements.push({ x, y, wasColliding: false, sound: selectedSound, soundIndex: selectedRecordedSoundIndex });
     } else {
-        elements.push({ x: rotatedX, y: rotatedY, wasColliding: false, sound: selectedSound });
+        elements.push({ x: rotatedX, y: rotatedY, wasColliding: false, sound: selectedSound, soundIndex: selectedRecordedSoundIndex });
     }
     drawVinyl();
 }

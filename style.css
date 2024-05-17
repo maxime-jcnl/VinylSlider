@@ -84,6 +84,7 @@ body.light-mode {
     color: black;
 }
 
+/* Styles pour le bouton d'enregistrement */
 .sound-selector button.record {
     background-color: red;
 }
@@ -100,6 +101,7 @@ body.dark-mode .sound-selector button.record {
 body.dark-mode .sound-selector button.record.active {
     background-color: blue;
 }
+
 
 
 
