@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Vinyl Slider</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div class="slider-container">
+        <input type="range" id="speedControl" class="slider" min="-0.0555" max="0.0555" step="0.0001" value="0.01" orient="vertical" />
+        <div id="bpmDisplay">BPM: 0</div>
+    </div>
+    
+    <canvas id="vinylCanvas" width="800" height="800"></canvas>
+    <div class="sound-selector-container"> <!-- Nouveau conteneur -->
+        <div class="sound-selector">
+            <button id="kickBtn" class="active"></button> <!-- Ajout de la classe active ici -->
+            <button id="snareBtn"></button>
+            <button id="hatsBtn"></button>
+            <button id="percBtn"></button>
+        </div>
+    </div>
+    <button id="toggleRaysBtn">Toggle Rays</button>
+    <script src="script.js"></script>
+</body>
+</html>
