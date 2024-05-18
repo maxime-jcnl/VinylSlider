@@ -1,35 +1,35 @@
-// Création du canva
+// Création du canva (zone de dessin du site)
 const canvas = document.getElementById("vinylCanvas");
-const ctx = canvas.getContext("2d");
-const canvasWidth = 800;
+const ctx = canvas.getContext("2d"); // ctx sera notre outil pour tracer les différents éléments sur le site 
+const canvasWidth = 800; 
 const canvasHeight = 800;
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 
 // Paramètre du vinyl
-let angle = 0;
-const vinylRadius = Math.min(canvasWidth, canvasHeight) / 2 - 20;
-const widthVal = 10;
-const center = { x: canvas.width / 2, y: canvas.height / 2 };
+let angle = 0; // Variable d'inclinaison du disque, initialisé à 0°
+const vinylRadius = Math.min(canvasWidth, canvasHeight) / 2 - 20; // Taille de rayon du vinyl (adaptative à la taille du canva)
+const widthVal = 10; // Epaisseur du trait blanc du vinyl
+const center = { x: canvas.width / 2, y: canvas.height / 2 }; // Coordonnées du centre du vinyl
 let isRotating = true; // Cette variable passera en false pour mettre en pause la rotation
 
-const elements = []; // Tableau de nos éléments placé sur le vinyl
-let audioContext; // Variable pour la lecture des sons
-const sounds = {};
-const recordedSounds = []; // List to store recorded sounds
+const elements = []; // Tableau de nos éléments placé sur le vinyl (rond contenant les sons)
+let audioContext; // Variable pour la lecture des sons de l'API web audio
+const sounds = {};  // Contiendra les audio chargé, associant donc un nom et leurs fichier correspondant
+const recordedSounds = []; // Contiendra les audio enregistré par l'utilisateur
 
-// Charger les fichiers audio pour chaque son
+// Charger les fichiers audio pour chaque son (fonction courante de audioContext)
 async function loadSounds() {
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const soundFiles = {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)(); // Initialisation de l'instance d'audiocontexte de l'API web audio
+    const soundFiles = { // Définition des différents sons par défault
         kick: 'kick.wav',
         snare: 'snare.wav',
         hats: 'hh.wav',
         perc: 'perc.wav'
     };
-    for (const [key, value] of Object.entries(soundFiles)) {
-        const response = await fetch(value);
-        const arrayBuffer = await response.arrayBuffer();
+    for (const [key, value] of Object.entries(soundFiles)) { // Boucle pour chaque clé/valeur de soundFile
+        const response = await fetch(value); // Requete auprès du serveur de récupération du fichier audio
+        const arrayBuffer = await response.arrayBuffer(); // Converti la requete en arrayBuffer (objet )
         sounds[key] = await audioContext.decodeAudioData(arrayBuffer);
     }
 }
