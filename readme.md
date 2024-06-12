@@ -33,6 +33,7 @@ Nous avons débuter le projet en réaliser sur AdobeXD le prototype suivant :
 >*Prototype initial*
 
 Bien que notre site n'est pas parfaitement fidèle à ce design, nous somme arrivés en peu de temps à quelque chose de plus ou moins similaire:
+
 ![Démonstration](readmeFile/demo.gif)
 >*Version finale du projet*
 ### Fonctionnalités :
