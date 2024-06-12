@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>À propos de nous</title>
+    <link rel="stylesheet" href="../style/style_apropos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+</head>
+<body class="apropos-page">
+    <header>
+        <h1>À propos de nous</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Le projet</h2>
+            <p>Vinyl Slider est une webapp interactive pour créer en quelques clique le rythme de vos rêves</p>
+        </section>
+        
+        <section>
+            <h2>Notre équipe</h2>
+            <ul>
+                <li>Maxime Jaconelli - Etudiant EFREI - Promo 2027</li>
+                <li>Raphaël Houbart - Etudiant EFREI - Promo 2027</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Nos compétences</h2>
+            <ul>
+                <li>Programmation en C</li>
+                <li>Programmation en Java</li>
+                <li>Programmation Web: Front-end / back-end</li>
+                <li>Base de données: MySQL</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h2>Contactez-nous</h2>
+            <p>Vous pouvez nous contacter pour plus d'informations :</p>
+            <form action="accueil.html" >
+                <label for="first_name">Prénom:</label><br>
+                <input type="text" id="first_name" name="first_name" required><br>
+                <label for="last_name">Nom:</label><br>
+                <input type="text" id="last_name" name="last_name" required><br>
+                <label for="email">Adresse e-mail:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br>
+                <input type="submit" value="Envoyer">
+            </form>
+        </section>
+
+        <table>
+            <tr>
+              <th>Colonne 1</th>
+              <th>Colonne 2</th>
+              <th>Colonne 3</th>
+            </tr>
+            <tr>
+              <td rowspan="2">Cellule 1</td>
+              <td>Cellule 2</td>
+              <td>Cellule 3</td>
+            </tr>
+            <tr>
+              <td>Cellule 4</td>
+              <td>Cellule 5</td>
+            </tr>
+          </table>
+          
+        
+        </section>
+
+        <section>
+            <h3>Liens utiles</h3>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/maxime-jaconelli-b13625296/">Linkedin Maxime Jaconelli</a></li>
+                <li><a href="https://www.linkedin.com/in/rapha%C3%ABl-houbart-82963a251/">Linkedin Raphaël Houbart</a></li>
+                <li><a href="https://www.efrei.fr/">Site web EFREI</a></li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 - Maxime Jaconelli - Raphael Houbart</p>
+    </footer>
+    <script>
+        function applyTheme() {
+            const darkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.body.classList.toggle("dark-mode", darkMode);
+            document.body.classList.toggle("light-mode", !darkMode);
+        }
+
+        // Appliquer le thème au chargement de la page
+        document.addEventListener('DOMContentLoaded', applyTheme);
+
+        // Écouter les changements de thème
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
+    </script>
+</body>
+</html>

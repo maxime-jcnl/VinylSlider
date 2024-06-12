@@ -1,0 +1,359 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 50px); /* Leave space for footer */
+}
+
+#enterButton {
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+#enterButton:focus {
+    outline: none;
+}
+
+h1{
+    font-family: "Rubik", sans-serif;
+
+}
+/* Styles pour le footer */
+footer {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+footer a {
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "Rubik", sans-serif;
+    transition: color 0.3s;
+}
+
+/* Styles pour le mode sombre */
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+body.dark-mode #enterButton {
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+}
+
+body.dark-mode footer a {
+    color: white;
+}
+
+/* Styles pour le mode clair */
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+body.light-mode #enterButton {
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+}
+
+body.light-mode footer a {
+    color: black;
+}
+
+/* Transition pour l'effet de fondu */
+.fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 1;
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#bpmDisplay {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    font-family: "Rubik", sans-serif;
+    text-align: right;
+}
+
+.sound-selector-container {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: black; 
+    border-radius: 40px; 
+}
+
+.sound-selector {
+    display: flex;
+    flex-direction: column;
+}
+/* Styles pour les boutons */
+.sound-selector button {
+    width: 50px;
+    height: 50px;
+    margin: 10px 0;
+    border-radius: 50%;
+    background-color: white; 
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+/* Styles pour les boutons actifs avec un contour noir */
+.sound-selector button.active {
+    border: 4px solid black;
+}
+
+/* Styles pour les boutons en mode clair */
+.sound-selector button.light-mode {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+.sound-selector button.active.light-mode {
+    background-color: black;
+    color: white;
+    border: 4px solid rgb(255, 255, 255);
+}
+
+/* Styles pour les boutons en mode sombre */
+.sound-selector button.dark-mode {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+
+.sound-selector button.active.dark-mode {
+    background-color: white;
+    color: black;
+    border: 4px solid black;
+}
+
+.sound-selector button.record {
+    background-color: red;
+}
+
+.sound-selector button.record.active {
+    background-color: blue;
+    border: 4px solid black;
+}
+
+body.dark-mode .sound-selector button.record {
+    background-color: red;
+}
+
+body.dark-mode .sound-selector button.record.active {
+    background-color: blue;
+    border: 4px solid black;
+}
+
+
+
+/* Styles pour le slider */
+.slider-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 300px; /* Hauteur du slider */
+    height: 8px; /* Largeur du slider */
+    border-radius: 5px;
+    outline: none;
+    transform: rotate(270deg); /* Tourner pour Chrome et Firefox */
+    margin: 70%;
+    position: relative;
+}
+
+.slider::-webkit-slider-runnable-track {
+    border-radius: 5px;
+}
+
+.slider::-moz-range-track {
+    border-radius: 5px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.slider::-moz-range-thumb {
+    width: 30px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Dark mode styles */
+body.dark-mode #bpmDisplay {
+    color: white;
+}
+
+body.dark-mode .slider {
+    background: #000000;
+}
+
+body.dark-mode .slider::-webkit-slider-runnable-track {
+    background: white;
+}
+
+body.dark-mode .slider::-moz-range-track {
+    background: white;
+}
+
+body.dark-mode .slider::-webkit-slider-thumb {
+    background: black;
+}
+
+body.dark-mode .slider::-moz-range-thumb {
+    background: black;
+}
+
+body.dark-mode .sound-selector-container {
+    background-color: white;
+}
+
+body.dark-mode .sound-selector button {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+
+body.dark-mode .sound-selector button.active {
+    background-color: white;
+    color: black;
+}
+
+body.light-mode #bpmDisplay {
+    color: black;
+}
+
+body.light-mode .slider {
+    background: #ddd;
+}
+
+body.light-mode .slider::-webkit-slider-runnable-track {
+    background: black;
+}
+
+body.light-mode .slider::-moz-range-track {
+    background: black;
+}
+
+body.light-mode .slider::-webkit-slider-thumb {
+    background: white;
+}
+
+body.light-mode .slider::-moz-range-thumb {
+    background: white;
+}
+
+body.light-mode .sound-selector-container {
+    background-color: black;
+}
+
+body.light-mode .sound-selector button {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+body.light-mode .sound-selector button.active {
+    background-color: black;
+    color: white;
+}
+
+/* Styles pour le conteneur du métronome */
+.metronome-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 40px;
+    font-family: "Rubik", sans-serif;
+}
+
+/* Mode clair pour le conteneur du métronome */
+body.light-mode .metronome-container {
+    background-color: black;
+    border: 2px solid white;
+}
+
+body.light-mode .metronome-container label {
+    color: white;
+}
+
+body.light-mode .metronome-container input[type="checkbox"] {
+    background-color: black;
+    border: 2px solid white;
+}
+
+/* Mode sombre pour le conteneur du métronome */
+body.dark-mode .metronome-container {
+    background-color: white;
+    border: 2px solid black;
+}
+
+body.dark-mode .metronome-container label {
+    color: black;
+}
+
+body.dark-mode .metronome-container input[type="checkbox"] {
+    background-color: white;
+    border: 2px solid black;
+}
+
+.sound-selector button {
+    transition: transform 0.15s ease-in-out;
+}
+
+.sound-selector button:hover {
+    transform: scale(1.1    );
+}
+

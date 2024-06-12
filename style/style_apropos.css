@@ -1,0 +1,156 @@
+/* Styles généraux pour la page */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Rubik", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+main {
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+main section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+section p, section ul, section table {
+    font-size: 18px;
+}
+
+section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+section ul li {
+    margin-bottom: 10px;
+}
+
+section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+section table th, section table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+section form {
+    display: flex;
+    flex-direction: column;
+}
+
+section form label {
+    margin: 10px 0 5px;
+}
+
+section form input, section form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+section form input[type="submit"] {
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+section form input[type="submit"]:hover {
+    background-color: #333;
+}
+
+/* Styles pour le footer */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background-color: black;
+    color: white;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Mode sombre */
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+body.dark-mode header h1,
+body.dark-mode main section h2,
+body.dark-mode section p,
+body.dark-mode section ul li,
+body.dark-mode section table th,
+body.dark-mode section table td,
+body.dark-mode section form label,
+body.dark-mode footer p,
+body.dark-mode footer a {
+    color: white;
+}
+
+body.dark-mode section form input, 
+body.dark-mode section form textarea {
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+}
+
+body.dark-mode section form input[type="submit"] {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode section form input[type="submit"]:hover {
+    background-color: #ccc;
+}
+
+a {
+    color: #000000;
+  }
