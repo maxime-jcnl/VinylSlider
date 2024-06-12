@@ -32,7 +32,8 @@ Nous avons débuter le projet en réaliser sur AdobeXD le prototype suivant :
 ![Prototypage Initial](readmeFile/protoinit.png)
 >*Prototype initial*
 
-Bien que notre site n'est pas parfaitement fidèle à ce design, nous somme arrivés en peu de temps à quelque chose de plus ou moins similaire:![[Enregistrementdelecran2024-06-11a12.17.13-ezgif.com-video-to-gif-converter.gif]]
+Bien que notre site n'est pas parfaitement fidèle à ce design, nous somme arrivés en peu de temps à quelque chose de plus ou moins similaire:
+![Démonstration](readmeFile/demo.gif)
 >*Version finale du projet*
 ### Fonctionnalités :
 Voici les fonctionnalités techniques que nous avons pu intégrer: 
@@ -46,7 +47,7 @@ Voici les fonctionnalités techniques que nous avons pu intégrer:
 - Mode sombre / clair en fonction des paramètre système de l'utilisateur
 
 ### Schéma logique du fonctionnement du vinyle
-![[Pasted image 20240612122850.png]]
+![Schéma](readmeFile/schema.png)
 ### Principale fonction JS du projet : 
 #### Création du Vinyle
 Le vinyle est un élément graphique central de l'application. Sa création repose sur l'utilisation d'un canvas. Le vinyle est représenté par un cercle dessiné au centre du canvas. La taille du cercle est déterminée en fonction des dimensions du canevas.
