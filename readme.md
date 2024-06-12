@@ -1,3 +1,12 @@
+# Projet EFREI 2027
+
+## Auteurs
+**@maxime-jcnl** et **@raphhoubart**
+---
+
+Ce projet a été réalisé dans le cadre de notre cursus à l'EFREI, promotion 2027.
+
+---
 ## **Readme**:
 ### *Attention*:
 *Ce projet nécessite d'être hébergé sur un serveur pour fonctionner. En effet, la lecture des sons ne fonctionne pas en accès local sur la machine. Pour le tester, vous pouvez soit accéder à ce lien: https://vinyl-slider.vercel.app/ 
