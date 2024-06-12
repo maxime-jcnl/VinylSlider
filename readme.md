@@ -28,7 +28,8 @@ En réalisant ce projet, nous avons approfondi notre compréhension des technolo
 ---
 ### Prototype graphique :
 Nous avons débuter le projet en réaliser sur AdobeXD le prototype suivant : 
-![[Pasted image 20240611120610.png]]
+
+![Prototypage Initial](readmeFile/protoinit.png)
 >*Prototype initial*
 
 Bien que notre site n'est pas parfaitement fidèle à ce design, nous somme arrivés en peu de temps à quelque chose de plus ou moins similaire:![[Enregistrementdelecran2024-06-11a12.17.13-ezgif.com-video-to-gif-converter.gif]]
