@@ -1,7 +1,7 @@
 # Projet EFREI 2027
 
 ## Auteurs
-**@maxime-jcnl** et **@raphhoubart**
+**@maxime-jcnl** et **@raphael-hbrt**
 ---
 
 Ce projet a été réalisé dans le cadre de notre cursus à l'EFREI, promotion 2027.
